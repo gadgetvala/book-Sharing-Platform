@@ -18,6 +18,7 @@ const URI = 'Insert connection string here';
 /*MIDDLEWARE STACK*/
 app.use(express.json());
 app.use(morgon('dev'));
+app.use(helmet());
 
 /*Welcome to API*/
 app.get('/', (req, res) => {
