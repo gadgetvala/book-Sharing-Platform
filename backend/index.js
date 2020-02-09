@@ -10,13 +10,6 @@ const book = require('./routes/bookRoute');
 //Express Called
 const app = express();
 
-/*
- *LOCAL HOST CONNECTION
- *const URI = "mongodb://localhost:27017/bsp";
- */
-/*CONNECTION STRING TO mongoDB*/
-const URI = 'Insert connection string here';
-
 /*MIDDLEWARE STACK*/
 app.use(express.json());
 app.use(morgon('dev'));
