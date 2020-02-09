@@ -2,8 +2,10 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 
 /*LOCAL IMPORT*/
+const book = require('./routes/bookRoute');
 
 //Express Called
 const app = express();
@@ -19,6 +21,7 @@ const URI = 'Insert connection string here';
 app.use(express.json());
 app.use(morgon('dev'));
 app.use(helmet());
+app.use('/api/v1/book',book);
 
 /*Welcome to API*/
 app.get('/', (req, res) => {
