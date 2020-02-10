@@ -6,6 +6,7 @@ const helmet = require('helmet');
 
 /*LOCAL IMPORT*/
 const book = require('./routes/bookRoute');
+const user = require('./routes/userRoute');
 
 //Express Called
 const app = express();
@@ -14,7 +15,8 @@ const app = express();
 app.use(express.json());
 app.use(morgon('dev'));
 app.use(helmet());
-app.use('/api/v1/book',book);
+app.use('/api/v1/book', book);
+app.use('/api/v1/user', user);
 
 /*Welcome to API*/
 app.get('/', (req, res) => {
