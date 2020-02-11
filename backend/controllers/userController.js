@@ -1,10 +1,14 @@
 const User = require('./../models/userModel');
 
-exports.getAllUser = (req, res) => {
+exports.getAllUser = async (req, res) => {
 	try {
+		const users = await User.find();
+
 		res.status(200).json({
 			status: 'success',
-			data: 'All Register User'
+			data: {
+				users
+			}
 		});
 	} catch (err) {
 		res.status(400).json({
@@ -14,11 +18,15 @@ exports.getAllUser = (req, res) => {
 	}
 };
 
-exports.createUser = (req, res) => {
+exports.createUser = async (req, res) => {
 	try {
-		res.status(200).json({
+		const newUser = await User.create(req.body);
+
+		res.status(201).json({
 			status: 'success',
-			data: 'Post request for creating users'
+			data: {
+				USER: newUser
+			}
 		});
 	} catch (err) {
 		res.status(400).json({
@@ -28,11 +36,15 @@ exports.createUser = (req, res) => {
 	}
 };
 
-exports.getUser = (req, res) => {
+exports.getUser = async (req, res) => {
 	try {
+		const users = await User.findById(req.body.id);
+
 		res.status(200).json({
 			status: 'success',
-			data: 'Get user by id'
+			data: {
+				users
+			}
 		});
 	} catch (err) {
 		res.status(400).json({
@@ -42,11 +54,18 @@ exports.getUser = (req, res) => {
 	}
 };
 
-exports.updateUser = (req, res) => {
+exports.updateUser = async (req, res) => {
 	try {
+		const user = await User.findByIdAndUpdate(req.body.id, req.body, {
+			new: true,
+			runValidators: true
+		});
+
 		res.status(200).json({
 			status: 'success',
-			data: 'Update user details'
+			data: {
+				user
+			}
 		});
 	} catch (err) {
 		res.status(400).json({
@@ -56,8 +75,10 @@ exports.updateUser = (req, res) => {
 	}
 };
 
-exports.deleteUser = (req, res) => {
+exports.deleteUser = async (req, res) => {
 	try {
+		await User.findByIdAndDelete(req.body.id);
+
 		res.status(200).json({
 			status: 'success',
 			data: 'User deleted'
