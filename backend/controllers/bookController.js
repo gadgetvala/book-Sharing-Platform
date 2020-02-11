@@ -1,10 +1,14 @@
 const Book = require('./../models/bookModel');
 
-exports.getAllBook = (req, res) => {
+exports.getAllBook = async (req, res) => {
 	try {
+		const book = Book.find();
+
 		res.status(200).json({
 			status: 'success',
-			data: 'Display All Books'
+			data: {
+				book
+			}
 		});
 	} catch (err) {
 		res.status(400).json({
@@ -14,11 +18,15 @@ exports.getAllBook = (req, res) => {
 	}
 };
 
-exports.createBook = (req, res) => {
+exports.createBook = async (req, res) => {
 	try {
-		res.status(200).json({
+		const book = await Book.create(req.body);
+
+		res.status(201).json({
 			status: 'success',
-			data: 'Create New Book'
+			data: {
+				book
+			}
 		});
 	} catch (err) {
 		res.status(400).json({
@@ -28,11 +36,15 @@ exports.createBook = (req, res) => {
 	}
 };
 
-exports.getBook = (req, res) => {
+exports.getBook = async (req, res) => {
 	try {
+		const book = await Book.findById(req.body.id);
+
 		res.status(200).json({
 			status: 'success',
-			data: 'Get Book by Id'
+			data: {
+				book
+			}
 		});
 	} catch (err) {
 		res.status(400).json({
@@ -42,8 +54,13 @@ exports.getBook = (req, res) => {
 	}
 };
 
-exports.updateBook = (req, res) => {
+exports.updateBook = async (req, res) => {
 	try {
+		const book = await Book.findByIdAndUpdate(req.body.id, req.body, {
+			new: true,
+			runValidators: true
+		});
+
 		res.status(200).json({
 			status: 'success',
 			data: 'Update book details only by admin'
@@ -56,11 +73,13 @@ exports.updateBook = (req, res) => {
 	}
 };
 
-exports.delete = (req, res) => {
+exports.deleteBook = async (req, res) => {
 	try {
+		await Book.findByIdAndDelete(req.body.id);
+
 		res.status(200).json({
 			status: 'success',
-			data: 'delete Book only by admin'
+			data: 'Book is deleted By admin'
 		});
 	} catch (err) {
 		res.status(400).json({

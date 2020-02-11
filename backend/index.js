@@ -1,7 +1,6 @@
 /*GOBAL IMPORT*/
 const express = require('express');
 const morgan = require('morgan');
-const mongoose = require('mongoose');
 const helmet = require('helmet');
 
 /*LOCAL IMPORT*/
@@ -13,7 +12,7 @@ const app = express();
 
 /*MIDDLEWARE STACK*/
 app.use(express.json());
-app.use(morgon('dev'));
+app.use(morgan('dev'));
 app.use(helmet());
 app.use('/api/v1/book', book);
 app.use('/api/v1/user', user);
