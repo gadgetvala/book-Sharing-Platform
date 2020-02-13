@@ -1,14 +1,13 @@
 import 'dart:ui';
-
-import 'package:bsp/Screens/signup.dart';
+import 'package:bsp/Screens/login.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
+class Signup extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _SignupState createState() => _SignupState();
 }
 
-class _LoginState extends State<Login> {
+class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -33,7 +32,7 @@ class _LoginState extends State<Login> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Login',
+                      'Sign Up',
                       style: TextStyle(
                           letterSpacing: 2.0,
                           fontWeight: FontWeight.bold,
@@ -45,6 +44,50 @@ class _LoginState extends State<Login> {
                     ),
                     SizedBox(
                       height: 30,
+                    ),
+                    Container(
+                      height: 70,
+                      child: Card(
+                        elevation: 100.0,
+                        clipBehavior: Clip.antiAlias,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: Center(
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.all(15.0),
+                              hintText: 'First Name',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 70,
+                      child: Card(
+                        elevation: 100.0,
+                        clipBehavior: Clip.antiAlias,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: Center(
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.all(15.0),
+                              hintText: 'Last Name',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Container(
                       height: 70,
@@ -101,7 +144,7 @@ class _LoginState extends State<Login> {
                         ),
                         color: Colors.green,
                         child: Text(
-                          "LOGIN",
+                          "SIGN UP",
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
@@ -112,16 +155,16 @@ class _LoginState extends State<Login> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text("Don't have an account? "),
+                        Text("Already had an Account? "),
                         GestureDetector(
                             onTap: () {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
-                                return Signup();
+                                return Login();
                               }));
                             },
                             child: Text(
-                              "Sign Up",
+                              "Login",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ))
                       ],
@@ -129,18 +172,6 @@ class _LoginState extends State<Login> {
                     SizedBox(
                       height: 15,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text("Forget Password? "),
-                        GestureDetector(
-                            onTap: () {},
-                            child: Text(
-                              "Reset Password",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ))
-                      ],
-                    )
                   ],
                 ),
               ),
