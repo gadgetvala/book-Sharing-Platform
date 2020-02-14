@@ -1,3 +1,4 @@
+import 'package:bsp/Screens/HomePage/home.dart';
 import 'package:bsp/Screens/login.dart';
 import 'package:flutter/material.dart';
 
@@ -7,13 +8,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'BookShare',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Book Sharing'),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'BookShare',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: Home()
+        //MyHomePage(title: 'Book Sharing'),
+        );
   }
 }
 
