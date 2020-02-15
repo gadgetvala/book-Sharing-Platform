@@ -20,7 +20,15 @@ exports.getAllBook = async (req, res) => {
 
 exports.createBook = async (req, res) => {
 	try {
-		const book = await Book.create(req.body);
+		const book = await Book.create({
+			category: req.body.category,
+			bookName: req.body.bookName,
+			uploadDate: Date.now(),
+			bookImage: req.body.bookImage,
+			bookType: req.body.bookType,
+			isAvailable: req.body.isAvailable,
+			tag: req.body.tag
+		});
 
 		res.status(201).json({
 			status: 'success',
@@ -81,7 +89,7 @@ exports.deleteBook = async (req, res) => {
 
 		res.status(200).json({
 			status: 'success',
-			data: "Book Deleted successfully"
+			data: 'Book Deleted successfully'
 		});
 	} catch (err) {
 		res.status(400).json({
