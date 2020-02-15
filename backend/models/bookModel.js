@@ -13,8 +13,7 @@ const bookSchema = new mongoose.Schema({
 		maxlength: 22
 	},
 	uploadDate: {
-		type: Date,
-		require: [true, 'Book must have a uploaded Date']
+		type: Date
 	},
 	bookImage: {
 		type: String

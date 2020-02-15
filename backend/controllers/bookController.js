@@ -2,7 +2,7 @@ const Book = require('./../models/bookModel');
 
 exports.getAllBook = async (req, res) => {
 	try {
-		const book = Book.find();
+		const book = await Book.find();
 
 		res.status(200).json({
 			status: 'success',
@@ -38,7 +38,7 @@ exports.createBook = async (req, res) => {
 
 exports.getBook = async (req, res) => {
 	try {
-		const book = await Book.findById(req.body.id);
+		const book = await Book.findById(req.params.id);
 
 		res.status(200).json({
 			status: 'success',
@@ -56,14 +56,16 @@ exports.getBook = async (req, res) => {
 
 exports.updateBook = async (req, res) => {
 	try {
-		const book = await Book.findByIdAndUpdate(req.body.id, req.body, {
+		const book = await Book.findByIdAndUpdate(req.params.id, req.body, {
 			new: true,
 			runValidators: true
 		});
 
 		res.status(200).json({
 			status: 'success',
-			data: 'Update book details only by admin'
+			data: {
+				book
+			}
 		});
 	} catch (err) {
 		res.status(400).json({
@@ -75,11 +77,11 @@ exports.updateBook = async (req, res) => {
 
 exports.deleteBook = async (req, res) => {
 	try {
-		await Book.findByIdAndDelete(req.body.id);
+		await Book.findByIdAndDelete(req.params.id);
 
 		res.status(200).json({
 			status: 'success',
-			data: 'Book is deleted By admin'
+			data: "Book Deleted successfully"
 		});
 	} catch (err) {
 		res.status(400).json({

@@ -38,7 +38,7 @@ exports.createUser = async (req, res) => {
 
 exports.getUser = async (req, res) => {
 	try {
-		const users = await User.findById(req.body.id);
+		const users = await User.findById(req.params.id);
 
 		res.status(200).json({
 			status: 'success',
@@ -56,7 +56,7 @@ exports.getUser = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
 	try {
-		const user = await User.findByIdAndUpdate(req.body.id, req.body, {
+		const user = await User.findByIdAndUpdate(req.params.id, req.body, {
 			new: true,
 			runValidators: true
 		});
@@ -77,7 +77,7 @@ exports.updateUser = async (req, res) => {
 
 exports.deleteUser = async (req, res) => {
 	try {
-		await User.findByIdAndDelete(req.body.id);
+		await User.findByIdAndDelete(req.params.id);
 
 		res.status(200).json({
 			status: 'success',
