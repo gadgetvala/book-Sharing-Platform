@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"category\" : \"Test 1\",\n\t\"bookName\" : \"Test 1\",\n\t\"bookType\" : \"notes\",\n\t\"isAvailable\" : \"true\"\n}"
+							"raw": "{\n\t\"category\" : \"hhh\",\n\t\"bookName\" : \"hhh 1\",\n\t\"bookType\" : \"notes\",\n\t\"isAvailable\" : \"true\",\n\t\"tag\" : [\"sss\", \"suraj\"]\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8000/api/v1/book/",
@@ -272,6 +272,110 @@
 								"v1",
 								"user",
 								"5e476beb1b4feb30b72eb13d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "borrow",
+			"item": [
+				{
+					"name": "createRecord",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"bookID\" : \"5e476b96854bc130f55eed28\",\n\t\"userID\" : \"5e476d93d6595025ef66b7f1\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/borrow/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"borrow",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllRecord",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/borrow/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"borrow",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRecordByUserID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/borrow/5e476d93d6595025ef66b7f1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"borrow",
+								"5e476d93d6595025ef66b7f1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteRecord",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/borrow/5e478e2ac1ba2a11a6c4ceaf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"borrow",
+								"5e478e2ac1ba2a11a6c4ceaf"
 							]
 						}
 					},
