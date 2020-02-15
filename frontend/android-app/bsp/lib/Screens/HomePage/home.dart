@@ -1,4 +1,7 @@
 import 'package:bsp/Screens/HomePage/DefaultPage.dart';
+import 'package:bsp/Screens/favPage.dart';
+import 'package:bsp/Screens/profile.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -15,7 +18,12 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('Books'),
         centerTitle: true,
-        leading: IconButton(icon: Icon(Icons.person), onPressed: () {}),
+        leading: IconButton(
+            icon: Icon(Icons.person),
+            onPressed: () {
+              Navigator.of(context).push(
+                  CupertinoPageRoute(builder: (context) => ProfilePage()));
+            }),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.search), onPressed: () {})
         ],
@@ -36,7 +44,10 @@ class _HomeState extends State<Home> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => FavPage()));
+        },
         child: Icon(Icons.favorite),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -48,7 +59,7 @@ class _HomeState extends State<Home> {
       return DefaultPage();
     }
     if (position == 1) {
-      //return Category();
+      return FavPage();
     }
   }
 
