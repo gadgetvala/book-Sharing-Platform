@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 
 dotenv.config({ path: './config.env' });
 
-const DB = process.env.DATABASE_ATLAS.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
+const DB = process.env.DATABASE_ATLAS;
 
 mongoose
 	.connect(DB, {
@@ -23,5 +23,5 @@ mongoose
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-	console.log(`Server is running on port ${PORT}...`);
+	console.log(`Server is running on port ${PORT}.`);
 });

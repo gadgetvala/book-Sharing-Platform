@@ -25,10 +25,10 @@ const userSchema = new mongoose.Schema({
 		require: [true, 'Please provide a branch']
 	},
 	semester: {
-		type: Number,
+		type: String,
 		require: [true, 'Please provide a semester'],
 		enum: {
-			values: [1, 2, 3, 4, 5, 6, 7, 8],
+			values: ['1', '2', '3', '4', '5', '6', '7', '8'],
 			message: 'Only 1 to 8 semester'
 		}
 	},

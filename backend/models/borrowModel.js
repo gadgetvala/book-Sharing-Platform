@@ -4,7 +4,7 @@ const borrowSchema = new mongoose.Schema({
 	bookID: {
 		type: String
 	},
-	userID : {
+	userID: {
 		type: String
 	},
 	borrowDate: {
@@ -15,6 +15,6 @@ const borrowSchema = new mongoose.Schema({
 	}
 });
 
-const borrowModel = const mongoose.model("Borrow", borrowModel);
+const borrowModel = mongoose.model('Borrow', borrowSchema);
 
 module.exports = borrowModel;
