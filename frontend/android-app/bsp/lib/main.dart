@@ -1,3 +1,5 @@
+import 'package:bsp/Screens/HomePage/home.dart';
+import 'package:bsp/Screens/login.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -6,12 +8,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'BookShare',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Book Sharing'),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'BookShare',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: Home()
+        //MyHomePage(title: 'Book Sharing'),
+        );
   }
 }
 
@@ -30,16 +34,25 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'Book Sharing App',
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return Login();
+          }));
+        },
       ),
     );
   }
