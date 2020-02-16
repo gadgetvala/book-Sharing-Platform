@@ -2,10 +2,12 @@ const mongoose = require('mongoose');
 
 const borrowSchema = new mongoose.Schema({
 	bookID: {
-		type: String
+		type: Schema.Types.ObjectId,
+		require: [true, 'a borrow should have a book id']
 	},
 	userID: {
-		type: String
+		type: Schema.Types.ObjectId,
+		require: [true, 'a borrow should have a user']
 	},
 	borrowDate: {
 		type: Date

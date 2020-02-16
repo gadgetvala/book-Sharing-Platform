@@ -1,19 +1,26 @@
 const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema({
-	category: {
+	subject: {
 		type: String,
-		require: [true, 'Book category is required'],
+		require: [true, 'Book subject is required'],
 		lowercase: true
 	},
 	bookName: {
 		type: String,
 		require: [true, 'Book must have a name'],
 		minlength: 5,
-		maxlength: 22
+		maxlength: 255,
+		lowercase: true
 	},
+	author: {
+		type: String,
+		require: [true, 'Book must have a author']
+		lowercase: true
+	}
 	uploadDate: {
-		type: Date
+		type: Date,
+		default: Date.now()
 	},
 	bookImage: {
 		type: String
@@ -29,11 +36,12 @@ const bookSchema = new mongoose.Schema({
 	},
 	isAvailable: {
 		type: Boolean,
-		require: [true, 'Book must be marks as available or no']
+		// require: [true, 'Book must be marks as available or no']
+		default: true
 	},
 	tag: {
-		type: Array,
-		default: undefined
+		type: [String],
+		required: [true, 'every book or notes must have tags']
 	}
 });
 

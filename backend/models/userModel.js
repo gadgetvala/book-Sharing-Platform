@@ -28,15 +28,22 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		require: [true, 'Please provide a semester'],
 		enum: {
-			values: ['1', '2', '3', '4', '5', '6', '7', '8'],
+			values: ['1', '2', '3', '4', '5', '6', '7', '8', 'complete'],
 			message: 'Only 1 to 8 semester'
-		}
+		},
 	},
 	enrollmentNo: {
 		type: Number,
 		require: [true, 'Please provide a Enrollment'],
 		minlength: 12,
 		maxlength: 12
+	},
+	userType: {
+		type: String,
+		default: 'student',
+		enum: {
+			values: ['student', 'faculty', 'alumini']
+		}
 	}
 });
 
