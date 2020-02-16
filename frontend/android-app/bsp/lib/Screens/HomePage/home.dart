@@ -1,4 +1,5 @@
 import 'package:bsp/Screens/HomePage/DefaultPage.dart';
+import 'package:bsp/Screens/HomePage/issuedBook.dart';
 import 'package:bsp/Screens/favPage.dart';
 import 'package:bsp/Screens/profile.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,7 +17,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Books'),
+        title: Text('Book Sharing'),
         centerTitle: true,
         leading: IconButton(
             icon: Icon(Icons.person),
@@ -37,7 +38,8 @@ class _HomeState extends State<Home> {
           items: [
             BottomNavigationBarItem(
                 icon: Icon(Icons.home), title: Text("Home")),
-            BottomNavigationBarItem(icon: Icon(Icons.book), title: Text("Book"))
+            BottomNavigationBarItem(
+                icon: Icon(Icons.book), title: Text("Issued Book"))
           ],
           currentIndex: _selectedIndex,
           onTap: _onTap,
@@ -59,7 +61,7 @@ class _HomeState extends State<Home> {
       return DefaultPage();
     }
     if (position == 1) {
-      return FavPage();
+      return IssuedBook();
     }
   }
 
