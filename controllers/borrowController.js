@@ -1,15 +1,36 @@
 const Borrow = require('./../models/borrowModel');
+const Book = require('./../models/bookModel.js');
+const User = require('./../models/userModel.js');
 
 exports.getAll = async (req, res) => {
 	try {
 		const borrow = await Borrow.find();
+		
+		let borrowerIds=[];
+		let booksIds=[];
+		borrow.forEach(borrow => {
+			booksIds.push(borrow.bookID);
+			borrowerIds.push(borrow.userID);
+		});
+
+		const borrowers = await User.find({ _id: {$in: borrowerIds} });
+		const books = await Book.find({ _id: {$in: booksIds} });	
+
+		const result = borrowers.map((borrow, index) => {
+			return ({
+							user: borrow,
+							book: books[index]
+						})
+		})
+
 
 		res.status(200).json({
 			status: 'success',
 			data: {
-				borrow
+				result
 			}
 		});
+
 	} catch (err) {
 		res.status(400).json({
 			status: 'failure',

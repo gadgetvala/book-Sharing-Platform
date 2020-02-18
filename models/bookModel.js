@@ -15,9 +15,9 @@ const bookSchema = new mongoose.Schema({
 	},
 	author: {
 		type: String,
-		require: [true, 'Book must have a author']
+		require: [true, 'Book must have a author'],
 		lowercase: true
-	}
+	},
 	uploadDate: {
 		type: Date,
 		default: Date.now()
