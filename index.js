@@ -23,7 +23,7 @@ app.use('/api/v1/borrow', borrow);
 app.get('/', (req, res) => {
 	res.status(200).json({
 		status: 'success',
-		data: 'Welcome to Book Sharing Platform developed by Team Decoders.'
+		data: `Welcome to Book Sharing Platform developed by <Team Decoders />.`
 	});
 });
 
