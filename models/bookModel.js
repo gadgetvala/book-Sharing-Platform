@@ -10,7 +10,7 @@ const bookSchema = new mongoose.Schema({
 		type: String,
 		require: [true, 'Book must belongs to any department'],
 		lowercase: true
-	}
+	},
 	bookName: {
 		type: String,
 		require: [true, 'Book must have a name'],
