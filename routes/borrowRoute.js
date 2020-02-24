@@ -1,5 +1,6 @@
 const express = require('express');
 const borrowController = require('./../controllers/borrowController.js');
+const Auth = require("./../middlewares/Auth");
 
 const router = express.Router();
 
@@ -10,7 +11,7 @@ router
 
 router
 	.route('/:id')
-	.get(borrowController.getAllByUser)
+	.get(Auth, borrowController.getAllByUser)
 	.delete(borrowController.deleteRecord);
 
 module.exports = router;
