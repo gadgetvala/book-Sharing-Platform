@@ -6,6 +6,11 @@ const bookSchema = new mongoose.Schema({
 		require: [true, 'Book subject is required'],
 		lowercase: true
 	},
+	department: {
+		type: String,
+		require: [true, 'Book must belongs to any department'],
+		lowercase: true
+	}
 	bookName: {
 		type: String,
 		require: [true, 'Book must have a name'],
