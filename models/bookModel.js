@@ -45,8 +45,10 @@ const bookSchema = new mongoose.Schema({
 		default: true
 	},
 	tag: {
-		type: [String],
-		required: [true, 'every book or notes must have tags']
+		type: [String]
+	},
+	doner: {
+		type: Number
 	}
 });
 

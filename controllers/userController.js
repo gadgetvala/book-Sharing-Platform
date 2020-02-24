@@ -73,7 +73,6 @@ exports.signin = async (req, res) => {
       email: req.body.email,
       password: hash
     });
-    console.log("I reach on first place");
 
     if (result.length !== 0) {
       if (result[0].token === null) {
@@ -89,6 +88,10 @@ exports.signin = async (req, res) => {
         status: "success",
         data: {
           name: result[0].name,
+          email: result[0].email,
+          branch: result[0].branch,
+          semester: result[0].semester,
+          enrollmentNo: result[0].enrollmentNo,
           userType: result[0].userType,
           token: result[0].token
         }
