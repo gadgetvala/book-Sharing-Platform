@@ -44,7 +44,19 @@ const userSchema = new mongoose.Schema({
   token: {
     type: String,
     default: null
+  },
+  income: {
+    type: Number,
+    default: 100000
+  },
+  descripition : {
+    type: String,
+    default : "A student is primarily a person enrolled in a school or other educational institution who attends classes in a course to attain the appropriate level of mastery of a subject under the guidance of an instructor and who devotes time outside class to do whatever activities the instructor assigns"
+  },
+  cgpa : { 
+    type: Number
   }
+  
 });
 
 const User = mongoose.model("user", userSchema);

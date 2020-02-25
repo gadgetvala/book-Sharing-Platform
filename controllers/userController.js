@@ -74,6 +74,29 @@ exports.signin = async (req, res) => {
       password: hash
     });
 
+    const needScore = () => {
+      let score1, score3;
+      //Based on Salary
+      if (result[0].income > 600000) {
+        score1 = 0;
+      } else {
+        score1 = (1 - result[0].income / 600000) * 5;
+      }
+
+      //Based on department
+      // if(result[0].branch === ){
+      //   score2 = 5;
+      // } else {
+      //   score2 = 2.5;
+      // }
+
+      //Based on marks
+      score3 = (result[0].cgpa / 10) * 5;
+
+      //Average
+      return ((score1 + score3) / 10) * 5;
+    };
+
     if (result.length !== 0) {
       if (result[0].token === null) {
         let token = await jwt.sign(
@@ -93,7 +116,9 @@ exports.signin = async (req, res) => {
           semester: result[0].semester,
           enrollmentNo: result[0].enrollmentNo,
           userType: result[0].userType,
-          token: result[0].token
+          token: result[0].token,
+          needScore: Math.floor(needScore()),
+          mongoID: result[0]._id
         }
       });
       return;

@@ -11,7 +11,7 @@ router
 
 router
 	.route('/:id')
-	.get(Auth, borrowController.getAllByUser)
+	.get(borrowController.getAllByUser)
 	.delete(borrowController.deleteRecord);
 
 module.exports = router;
