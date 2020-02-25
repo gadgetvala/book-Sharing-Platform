@@ -106,7 +106,7 @@ exports.signin = async (req, res) => {
         result[0].token = token;
         await User.updateOne({ email: result[0].email }, { token });
       }
-
+      console.log(result[0]);
       res.status(200).json({
         status: "success",
         data: {
@@ -118,7 +118,10 @@ exports.signin = async (req, res) => {
           userType: result[0].userType,
           token: result[0].token,
           needScore: Math.floor(needScore()),
-          mongoID: result[0]._id
+          mongoID: result[0]._id,
+          income: result[0].income,
+          descripition: result[0].descripition,
+          cgpa: result[0].cgpa
         }
       });
       return;
